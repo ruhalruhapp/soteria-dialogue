@@ -10,7 +10,7 @@ COPY package.json bun.lock ./
 COPY prisma ./prisma
 
 # Install dependencies
-RUN bun install --frozen-lockfile
+RUN bun install
 
 # ─── Stage 2: Build ───
 FROM oven/bun:1 AS builder
@@ -36,8 +36,8 @@ ENV PORT=10000
 ENV HOSTNAME="0.0.0.0"
 
 # Create non-root user for security
-RUN addgroup --system --gid 1001 nodejs && \
-    adduser --system --uid 1001 nextjs
+RUN groupadd --system --gid 1001 nodejs && \
+    useradd --system --uid 1001 --gid nodejs nextjs
 
 # Copy standalone build output
 COPY --from=builder /app/.next/standalone ./

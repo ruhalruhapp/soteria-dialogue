@@ -2,22 +2,15 @@
 # This file defines the infrastructure for Render to provision.
 # Docs: https://render.com/docs/blueprint-spec
 
-services:
-  # ─── PostgreSQL Database ───
-  - type: pserv
-    name: soteria-db
+databases:
+  # --- PostgreSQL Database ---
+  - name: soteria-db
     region: oregon
-    plan: free  # upgrade to starter for production
-    ipAllowList: []  # only allow connections from Render services
-    env:
-      - key: POSTGRES_USER
-        value: soteria
-      - key: POSTGRES_PASSWORD
-        sync: false  # set via Render dashboard or API
-      - key: POSTGRES_DB
-        value: soteria
+    plan: free  # upgrade to starter for production (note: free Postgres expires after 30 days)
+    ipAllowList: []
 
-  # ─── Web Service (Next.js app) ───
+services:
+  # --- Web Service (Next.js app) ---
   - type: web
     name: soteria-dialogue
     region: oregon
@@ -25,7 +18,7 @@ services:
     runtime: docker
     dockerfilePath: ./Dockerfile
     healthCheckPath: /api/health
-    autoDeploy: true
+    autoDeployTrigger: commit
     envVars:
       - key: DATABASE_URL
         fromDatabase:

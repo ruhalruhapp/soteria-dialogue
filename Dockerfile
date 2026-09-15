@@ -42,15 +42,6 @@ RUN addgroup --system --gid 1001 nodejs && \
 # Copy standalone build output
 COPY --from=builder /app/.next/standalone ./
 COPY --from=builder /app/.next/static ./.next/static
-COPY --from=builder /app/public ./public
-
-# Copy Prisma files for DB migrations at runtime
-COPY --from=builder /app/prisma ./prisma
-COPY --from=builder /app/node_modules/.prisma ./node_modules/.prisma
-COPY --from=builder /app/node_modules/@prisma ./node_modules/@prisma
-
-# Copy package.json for db:push script
-COPY package.json ./
 
 USER nextjs
 
@@ -60,5 +51,8 @@ EXPOSE 10000
 HEALTHCHECK --interval=30s --timeout=3s --start-period=30s --retries=3 \
   CMD curl -f http://localhost:10000/api/health || exit 1
 
-# Run Prisma migrations then start the server
-CMD ["sh", "-c", "bun run db:push && bun .next/standalone/server.js"]
+# Start the server. The app is client-state only (zustand persist);
+# no Prisma/DB at runtime. ponytail: DB via Render Postgres linked to
+# this service as DATABASE_URL is provisioned but unused — to use it,
+# add prisma migrate/seed here or via preDeployCommand.
+CMD ["bun", ".next/standalone/server.js"]

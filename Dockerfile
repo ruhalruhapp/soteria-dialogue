@@ -55,4 +55,4 @@ HEALTHCHECK --interval=30s --timeout=3s --start-period=30s --retries=3 \
 # no Prisma/DB at runtime. ponytail: DB via Render Postgres linked to
 # this service as DATABASE_URL is provisioned but unused — to use it,
 # add prisma migrate/seed here or via preDeployCommand.
-CMD ["bun", ".next/standalone/server.js"]
+CMD ["bun", "server.js"]

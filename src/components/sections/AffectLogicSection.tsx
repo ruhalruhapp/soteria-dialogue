@@ -19,18 +19,11 @@ import { useAppStore } from "@/lib/store";
  */
 export function AffectLogicSection() {
   const { currentTension, setCurrentTension } = useAppStore();
-  const [history, setHistory] = useState<Array<{ ts: number; tension: number; response: string }>>([
-    { ts: Date.now() - 3600000, tension: 7, response: "dimmed_ui" },
-    { ts: Date.now() - 1800000, tension: 6, response: "silenced_notifications" },
-    { ts: Date.now() - 600000, tension: 5, response: "none" },
-  ]);
+  const [history, setHistory] = useState<Array<{ ts: number; tension: number; response: string }>>([]);
 
-  // The environment response logic — visible to the user (transparency)
+  // This preview does not automatically change the environment.
   const getEnvironmentResponse = (tension: number): string => {
-    if (tension >= 8) return "dimmed_ui + silenced_notifications + widened_window";
-    if (tension >= 6) return "dimmed_ui + silenced_notifications";
-    if (tension >= 4) return "none";
-    return "workbook_unlocked + network_circle_offered";
+    return "No automatic environment changes are active in this preview.";
   };
 
   const logCheckIn = (tension: number) => {
@@ -61,9 +54,7 @@ export function AffectLogicSection() {
       <div>
         <h2 className="text-xl font-light text-foreground/90">Affect-Logic</h2>
         <p className="text-sm text-muted-foreground mt-1 max-w-lg leading-relaxed">
-          The platform responds to your affective tension — not a symptom score,
-          not a diagnosis. You tell it how you feel. It adjusts the environment.
-          You see exactly what it does. No hidden surveillance.
+          You can record a self-reported check-in in this page. In this preview, check-ins remain in memory for this visit only; they do not change the interface, trigger actions, or go to a database.
         </p>
       </div>
 
@@ -153,13 +144,14 @@ export function AffectLogicSection() {
       <div className="space-y-3">
         <div className="flex items-center justify-between">
           <span className="text-xs text-muted-foreground uppercase tracking-wider">
-            Recent samples
+            Recent check-ins (this visit only)
           </span>
           <span className="text-[10px] text-muted-foreground/50">
-            You can correct any entry
+            Cleared when you leave this page
           </span>
         </div>
         <div className="space-y-1.5 max-h-48 overflow-y-auto">
+          {history.length === 0 && <p className="rounded-lg border border-dashed p-3 text-xs text-muted-foreground">No check-ins recorded in this visit.</p>}
           {history.slice().reverse().map((h, i) => (
             <div
               key={i}
@@ -183,9 +175,7 @@ export function AffectLogicSection() {
 
       {/* Transparency note */}
       <div className="text-xs text-muted-foreground/60 border-t pt-4 leading-relaxed">
-        The Affect-Logic Engine uses only what you tell it. No behavioral tracking
-        without your consent. No content analysis. No risk score. The environment
-        responds to your affect — and you see exactly what it does.
+        This is an exploratory self-report control only. Check-ins are held in page memory, not saved to your account. The preview does not monitor behavior, analyze content, calculate risk, or change your environment based on check-ins.
       </div>
     </div>
   );

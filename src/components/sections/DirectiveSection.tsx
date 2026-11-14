@@ -68,9 +68,7 @@ export function DirectiveSection() {
       <div>
         <h2 className="text-xl font-light text-foreground/90">Advance Directive</h2>
         <p className="text-sm text-muted-foreground mt-1 max-w-lg leading-relaxed">
-          You decide what the platform is allowed to do. The platform is
-          architecturally incapable of acting outside what you authorize here.
-          No silent escalation. No duty-to-warn override.
+          This prototype lets you record preferences. These selections are stored only in this browser and are not enforced by the server or connected to an emergency response service.
         </p>
       </div>
 
@@ -120,10 +118,10 @@ export function DirectiveSection() {
             Specific situations I authorize
           </div>
           {[
-            { key: "authorizeCrisisLine" as const, label: "Surface crisis line (988) resources", desc: "The platform may proactively show 988 resources." },
-            { key: "authorizeEmergencyServices" as const, label: "Contact emergency services (911)", desc: "The platform may call 911 on your behalf. Requires triple confirmation." },
-            { key: "authorizeNotificationOfNetwork" as const, label: "Notify my social network", desc: "The platform may contact family/friends you've listed." },
-            { key: "authorizePhysicalTransition" as const, label: "Recommend physical micro-house", desc: "The platform may suggest transition to a physical respite house." },
+            { key: "authorizeCrisisLine" as const, label: "Show a crisis support resource", desc: "A future version may display locally appropriate support resources." },
+            { key: "authorizeEmergencyServices" as const, label: "Contact local emergency services", desc: "This is not implemented. The prototype cannot place emergency calls." },
+            { key: "authorizeNotificationOfNetwork" as const, label: "Notify my social network", desc: "This is not implemented. The prototype cannot contact your network." },
+            { key: "authorizePhysicalTransition" as const, label: "Recommend physical micro-house", desc: "This is not implemented. The prototype cannot arrange a physical transition." },
           ].map((item) => (
             <div key={item.key} className="flex items-start gap-3 py-2 px-3 rounded-lg hover:bg-muted/20">
               <button
@@ -171,11 +169,11 @@ export function DirectiveSection() {
           onClick={save}
           className="px-4 py-2 rounded-md bg-primary text-primary-foreground text-sm"
         >
-          Save my directive
+          Save on this device
         </button>
         {directiveCompleted && (
           <span className="text-xs text-muted-foreground">
-            ✓ Saved — the platform will respect these boundaries
+            Saved on this device only
           </span>
         )}
         {saved && (
@@ -188,17 +186,13 @@ export function DirectiveSection() {
       {/* The architectural guarantee */}
       <div className="rounded-lg border border-dashed p-4 space-y-2">
         <div className="text-xs text-muted-foreground uppercase tracking-wider">
-          What this means architecturally
+          Important limitation
         </div>
         <p className="text-sm text-foreground/80 leading-relaxed">
-          The platform&apos;s code is structured so that no intervention pathway
-          can execute without checking your directive first. There is no
-          override, no backdoor, no admin override. This is a design constraint,
-          not a policy that can be changed.
+          These preferences are not a legally binding advance directive and do not control emergency services, clinicians, or other people. No intervention, notification, or emergency call is currently implemented by this prototype.
         </p>
         <p className="text-xs text-muted-foreground/60 leading-relaxed">
-          If you uncheck everything, the platform becomes a companion that can
-          only be with you — it cannot act on your behalf. That is the default.
+          Do not rely on this screen as a safety plan. If you need urgent help, contact local emergency services or a trusted local crisis resource.
         </p>
       </div>
     </div>

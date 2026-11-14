@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useAppStore } from "@/lib/store";
 
 /**
@@ -38,22 +38,7 @@ export function DirectiveSection() {
   const [directive, setDirective] = useState<Directive>(DEFAULT_DIRECTIVE);
   const [saved, setSaved] = useState(false);
 
-  // Load from localStorage (in production: load from DB via /api/directive)
-  useEffect(() => {
-    const stored = localStorage.getItem("soteria-directive");
-    if (stored) {
-      try {
-        const parsed = JSON.parse(stored);
-        setDirective(parsed);
-        setDirectiveCompleted(true);
-      } catch {
-        // ignore
-      }
-    }
-  }, [setDirectiveCompleted]);
-
   const save = () => {
-    localStorage.setItem("soteria-directive", JSON.stringify(directive));
     setDirectiveCompleted(true);
     setSaved(true);
     setTimeout(() => setSaved(false), 3000);
@@ -68,7 +53,7 @@ export function DirectiveSection() {
       <div>
         <h2 className="text-xl font-light text-foreground/90">Advance Directive</h2>
         <p className="text-sm text-muted-foreground mt-1 max-w-lg leading-relaxed">
-          This prototype lets you record preferences. These selections are stored only in this browser and are not enforced by the server or connected to an emergency response service.
+          This prototype lets you record preferences. These selections are held only in page memory for this visit and are not enforced by the server or connected to an emergency response service.
         </p>
       </div>
 
@@ -169,11 +154,11 @@ export function DirectiveSection() {
           onClick={save}
           className="px-4 py-2 rounded-md bg-primary text-primary-foreground text-sm"
         >
-          Save on this device
+          Keep for this visit
         </button>
         {directiveCompleted && (
           <span className="text-xs text-muted-foreground">
-            Saved on this device only
+            Kept in page memory only
           </span>
         )}
         {saved && (

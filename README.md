@@ -4,7 +4,7 @@ Soteria Dialogue is an early-stage, adult-only digital platform concept inspired
 
 ## Current status
 
-This repository contains a **private preview foundation**, not a production-ready mental-health or crisis service.
+This repository contains a **private preview foundation**, not a production-ready mental-health or crisis service. The preview stores interactive content in page memory only and does not provide staffed services.
 
 Implemented on `vercel-production-setup`:
 - Next.js application configured for Vercel native deployment output.
@@ -28,7 +28,7 @@ Implemented on `vercel-production-setup`:
 
 - Next.js App Router, React, TypeScript
 - Prisma ORM with PostgreSQL
-- Auth.js email magic links
+- Auth.js email magic links with the maintained Resend provider
 - Resend for sign-in email
 - Vercel hosting
 - Neon PostgreSQL (recommended)

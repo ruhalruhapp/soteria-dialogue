@@ -1,3 +1,5 @@
+"use client";
+
 import { useAppStore } from "@/lib/store";
 import { signOut } from "next-auth/react";
 import { Nav } from "@/components/shell/Nav";

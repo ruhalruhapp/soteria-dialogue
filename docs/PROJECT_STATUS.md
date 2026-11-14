@@ -3,7 +3,7 @@
 ## Completed in this branch
 - Vercel-native Next.js output configuration.
 - Auth.js database-backed email magic-link authentication wiring.
-- Resend HTTP email sender for authentication links.
+- Auth.js Resend provider configuration for authentication links.
 - Server-side 18+ self-attestation signed with Auth.js secret and checked at sign-in.
 - Auth.js Prisma adapter models.
 - Pooled and direct PostgreSQL connection configuration.
@@ -20,7 +20,7 @@
 - No Resend domain/API key has been configured.
 - No database schema has been applied to a live database.
 - No build or integration tests have been run in this environment.
-- Personal content features are not yet persisted to the authenticated user database.
+- Personal content features are held in page memory only and are not persisted to the authenticated user database.
 - Rate limiting, moderation, safeguarding operations, privacy/legal review, and production security testing remain outstanding.
 
 **Do not treat this branch as approved for public launch.**

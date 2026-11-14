@@ -68,12 +68,10 @@ export function TrialogueSection() {
       </div>
 
       {/* Participants */}
+      <p className="text-xs text-muted-foreground">No other participants are connected in this preview.</p>
       <div className="flex flex-wrap gap-2">
         {[
           { name: "You", role: "user" as const },
-          { name: "Mom (Sarah)", role: "family" as const },
-          { name: "Marcus", role: "peer" as const, subtitle: "Peer Companion" },
-          { name: "Dr. Rostova", role: "clinician" as const, subtitle: "Facilitator" },
         ].map((p, i) => (
           <div key={i} className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-muted/30">
             <div className="size-2 rounded-full" style={{ backgroundColor: ROLE_COLORS[p.role] }} />

@@ -1,15 +1,13 @@
 import { NextResponse } from "next/server";
+import { db } from "@/lib/db";
 
 export const runtime = "nodejs";
 
-/**
- * Health check endpoint — used by Render (and Docker HEALTHCHECK).
- * Verifies the app is running. In production, also checks DB connectivity.
- */
 export async function GET() {
-  return NextResponse.json({
-    status: "ok",
-    service: "soteria-dialogue",
-    timestamp: new Date().toISOString(),
-  });
+  try {
+    await db.$queryRaw`SELECT 1`;
+    return NextResponse.json({ status: "ok", service: "soteria-dialogue", database: "connected", timestamp: new Date().toISOString() });
+  } catch {
+    return NextResponse.json({ status: "degraded", service: "soteria-dialogue", database: "unavailable", timestamp: new Date().toISOString() }, { status: 503 });
+  }
 }

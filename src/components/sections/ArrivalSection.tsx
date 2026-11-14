@@ -27,9 +27,7 @@ export function ArrivalSection() {
             You&apos;ve arrived.
           </h1>
           <p className="text-sm text-muted-foreground leading-relaxed">
-            This is a space for being with — not fixing, not diagnosing, not
-            rushing. A peer companion can be here with you. Your social network
-            can join the dialogue. You stay in control.
+            This is a space for being with — not fixing, not diagnosing, not rushing. Human companion connections and invited group dialogue are not yet available in this preview.
           </p>
         </div>
       </div>
@@ -45,8 +43,7 @@ export function ArrivalSection() {
             <span className="text-sm font-medium">Open the Window</span>
           </div>
           <p className="text-xs text-muted-foreground leading-relaxed">
-            A peer companion is available to be with you. Not a chat — just
-            presence. You don&apos;t have to talk.
+            A quiet space designed for human co-presence. No companion is connected in this preview.
           </p>
         </button>
 
@@ -59,8 +56,7 @@ export function ArrivalSection() {
             <span className="text-sm font-medium">Start a Trialogue</span>
           </div>
           <p className="text-xs text-muted-foreground leading-relaxed">
-            Bring your social network into the dialogue. Family, friends, a
-            facilitator pair. Multiple perspectives, no single authority.
+            Explore the dialogue format. Invited participants and live group sessions are not yet connected.
           </p>
         </button>
 
@@ -73,8 +69,7 @@ export function ArrivalSection() {
             <span className="text-sm font-medium">Triage</span>
           </div>
           <p className="text-xs text-muted-foreground leading-relaxed">
-            Not a risk assessment. A prediction of who benefits from the least
-            coercive pathway. Based on 50 years of Soteria evidence.
+            This section is disabled. No predictive assessment or care recommendation is provided.
           </p>
         </button>
 
@@ -87,8 +82,7 @@ export function ArrivalSection() {
             <span className="text-sm font-medium">Advance Directive</span>
           </div>
           <p className="text-xs text-muted-foreground leading-relaxed">
-            Decide what the platform is allowed to do. Non-coercion is
-            architectural — not policy. You write the rules.
+            Explore preference settings. They are not enforced by the platform in this preview.
           </p>
         </button>
       </div>
@@ -96,12 +90,10 @@ export function ArrivalSection() {
       {/* The lineage — the theoretical grounding */}
       <div className="max-w-lg text-center space-y-2 pt-8 border-t border-border/20">
         <p className="text-xs text-muted-foreground/60 leading-relaxed">
-          Built on 50 years of evidence: Soteria (Mosher, 1971), Affect-Logic
-          (Ciompi, Berne), Open Dialogue (Finland). The digital realization of
-          &ldquo;being with&rdquo; and dialogism.
+          A developing digital concept informed by Soteria, Affect-Logic, and Open Dialogue. This preview does not yet provide those human services.
         </p>
         <p className="text-[10px] text-muted-foreground/40">
-          43% drug-free responder rate · 0.38–0.61 SD effect size · 79% triage accuracy
+          Prototype preview · no clinical outcomes or prediction claims
         </p>
       </div>
     </div>

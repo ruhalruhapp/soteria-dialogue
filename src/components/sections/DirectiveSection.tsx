@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useAppStore } from "@/lib/store";
 
 /**
- * Primitive 6: Non-Coercion as Architecture — the Advance Directive.
+ * Primitive 6: Non-Coercion as Architecture — the Support Preferences (prototype).
  *
  * Per user's choice (B): The platform CAN trigger involuntary intervention,
  * but ONLY if the user has EXPLICITLY pre-authorized it for specific situations.
@@ -87,10 +87,10 @@ export function DirectiveSection() {
           </button>
           <div>
             <p className="text-sm font-medium">
-              I authorize the platform to take involuntary action in specific situations I define below.
+              I would like a future service to take these preferences into account.
             </p>
             <p className="text-xs text-muted-foreground mt-1">
-              If unchecked, the platform will NEVER trigger any intervention without your explicit in-the-moment request.
+              No intervention is available in this preview, regardless of the selections below.
             </p>
           </div>
         </div>
@@ -100,7 +100,7 @@ export function DirectiveSection() {
       {directive.anyInterventionAuthorized && (
         <div className="space-y-2">
           <div className="text-xs text-muted-foreground uppercase tracking-wider">
-            Specific situations I authorize
+            Preferences to explore
           </div>
           {[
             { key: "authorizeCrisisLine" as const, label: "Show a crisis support resource", desc: "A future version may display locally appropriate support resources." },
@@ -174,7 +174,7 @@ export function DirectiveSection() {
           Important limitation
         </div>
         <p className="text-sm text-foreground/80 leading-relaxed">
-          These preferences are not a legally binding advance directive and do not control emergency services, clinicians, or other people. No intervention, notification, or emergency call is currently implemented by this prototype.
+          These preferences are not a legal advance directive or an operational authorization. They are not sent to a service, clinician, or emergency responder, and no intervention or notification is implemented.
         </p>
         <p className="text-xs text-muted-foreground/60 leading-relaxed">
           Do not rely on this screen as a safety plan. If you need urgent help, contact local emergency services or a trusted local crisis resource.

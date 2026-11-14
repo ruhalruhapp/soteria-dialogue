@@ -163,7 +163,7 @@ export function DirectiveSection() {
         )}
         {saved && (
           <span className="text-xs text-primary">
-            Directive updated
+            Preferences updated
           </span>
         )}
       </div>

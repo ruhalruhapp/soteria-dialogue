@@ -22,13 +22,13 @@ export function AffectLogicSection() {
   const [history, setHistory] = useState<Array<{ ts: number; tension: number; response: string }>>([]);
 
   // This preview does not automatically change the environment.
-  const getEnvironmentResponse = (tension: number): string => {
+  const getEnvironmentResponse = (): string => {
     return "No automatic environment changes are active in this preview.";
   };
 
   const logCheckIn = (tension: number) => {
     setCurrentTension(tension);
-    const response = getEnvironmentResponse(tension);
+    const response = getEnvironmentResponse();
     setHistory((prev) => [
       ...prev,
       { ts: Date.now(), tension, response },
@@ -105,8 +105,8 @@ export function AffectLogicSection() {
             Environment response
           </span>
           <div className="text-sm text-foreground/80">
-            {getEnvironmentResponse(currentTension) === "none" ? (
-              <span className="text-muted-foreground italic">Baseline — no adjustments needed</span>
+            {getEnvironmentResponse() === "none" ? (
+              <span className="text-muted-foreground italic">No automatic changes are made</span>
             ) : (
               <span className="font-mono text-xs">{getEnvironmentResponse(currentTension)}</span>
             )}
